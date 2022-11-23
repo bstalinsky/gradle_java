@@ -24,6 +24,7 @@ public class BaseFunc {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5000));
     }
 
 
@@ -65,10 +66,50 @@ public class BaseFunc {
 
     public void pressKey(By locator, Keys key) {
         findElement(locator).sendKeys(key);
-//        wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-//        WebElement we = driver.findElement(locator);
-//
-//        we.sendKeys(key);
+
+    }
+
+    public void selectMultiplieCheckbox(By locator , String... value) {
+        List<WebElement> checkboxname = driver.findElements(locator);
+        if (!value[0].equalsIgnoreCase("all")){
+            for (WebElement item : checkboxname){
+                String text =item.getText();
+                for (String val:value){
+                    if(text.equals(val)){
+                        item.click();
+                        break;
+                    }
+                }
+            }
+        } else{
+            for (WebElement item : checkboxname){
+                item.click();
+            }
+        }
+
+    }
+    public void selectAllCheckboxes(By locator){
+        List<WebElement> checkboxes = driver.findElements(locator);
+        for (WebElement we: checkboxes) {
+            we.click();
+        }
+    }
+
+    public void selectByAttributeCheckbox(By locator , String value ) {
+        List<WebElement> checkboxes = driver.findElements(locator);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        for (WebElement we : checkboxes) {
+            String checkboxname = we.getText();
+            System.out.println("Checkbox name : "+ checkboxname);
+            if (checkboxname.equals(value))
+                try {
+                    we.click();
+                    break;
+                } catch (org.openqa.selenium.StaleElementReferenceException e) {
+                    System.out.println("Can't click");
+                    we.click();
+                }
+        }
     }
 
     public void select(By locator, String value) {
@@ -79,6 +120,11 @@ public class BaseFunc {
     public void selectByVisibleText(By locator, String value) {
         Select select = new Select(findElement(locator));
         select.selectByVisibleText(value);
+    }
+
+    public void selectByIndex(By locator, Integer value) {
+        Select select = new Select(findElement(locator));
+        select.selectByIndex(value);
     }
 
     public void tearDown() {
@@ -117,7 +163,8 @@ public class BaseFunc {
         List<WebElement> elements = element.findElements(locator);
         boolean flag = false;
         for (WebElement item : elements) {
-            if (item.getText().equals(value)) {
+            if (item.getText().contains(value)) {
+                System.out.println("Checkbox name : "+ item.getText());
                 flag = true;
                 try {
                     item.click();
@@ -130,6 +177,44 @@ public class BaseFunc {
         }
 
     }
+
+    public void chooseCategory1(By locator, String value) {
+        driver.findElement(locator);
+        WebElement element = driver.findElement(locator);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        List<WebElement> elements = element.findElements(locator);
+        boolean flag = false;
+        for (WebElement item : elements) {
+            if (item.getAttribute("id").contains(value)) {
+                System.out.println("Checkbox name : "+ item.getAttribute("id"));
+                flag = true;
+                try {
+                    item.click();
+                } catch (ElementClickInterceptedException e) {
+                    item.click();
+                }
+                break;
+            }
+
+        }
+
+    }
+
+    public void clickByArrayNumb(By locator, int value) {
+        WebElement element = driver.findElement(locator);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        List<WebElement> elements = element.findElements(locator);
+                System.out.println("Color list  : "+ elements.size());
+                try {
+                    elements.get(value).click();
+                } catch (ElementClickInterceptedException e) {
+                    elements.get(value);
+                }
+
+        }
+
+
+
 
 }
 

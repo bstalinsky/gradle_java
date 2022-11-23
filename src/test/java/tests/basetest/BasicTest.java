@@ -2,8 +2,8 @@
 package tests.basetest;
 
 import com.amazon.pageobject.basefunc.BaseFunc;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
+import org.openqa.selenium.*;
 
 
 
@@ -18,9 +18,9 @@ public abstract class BasicTest {
         BaseFunc.openUrl(HOME_PAGE_URL);
     }
 
-    @AfterMethod
-    public void tearDown() {
-        baseFunc.tearDown();
-    }
+//    @AfterMethod()
+//    public void tearDown() {
+//        baseFunc.tearDown();
+//    }
 }
 

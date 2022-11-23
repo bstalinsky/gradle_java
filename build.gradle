@@ -10,13 +10,19 @@ repositories {
 }
 
 dependencies {
-//    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-//    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-    implementation 'org.seleniumhq.selenium:selenium-java:4.5.0'
-    testImplementation group: 'org.testng', name: 'testng', version: '7.4.0'
+
+    implementation 'org.seleniumhq.selenium:selenium-java:4.6.0'
+    implementation 'org.testng:testng:7.1.0'
+    testImplementation 'org.testng:testng:7.5'
+    testImplementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.1'
+
+
 
 }
 
 test {
-    useJUnitPlatform()
+    useTestNG(){
+
+//        suites 'src/test/resources/suites/suite.xml'
+    }
 }
