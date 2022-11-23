@@ -49,8 +49,9 @@ public class SignUpPage {
 
     }
 
-    public void clickContinue() {
+    public MainPage clickContinue() {
         baseFunc.click(countinueBut);
+        return new MainPage(baseFunc);
 
     }
 
@@ -73,7 +74,7 @@ public class SignUpPage {
         return   baseFunc.getText(alertReEnterPassword);
     }
 
-    public SignUpPage register(String name, String email, String password, String password_re) {
+    public MainPage register(String name, String email, String password, String password_re) {
 
         this.typeCustomerName(name);
         this.typeEmail(email);
@@ -81,7 +82,7 @@ public class SignUpPage {
         this.typePassword2(password_re);
         this.typeCustomerName(name);
         this.clickContinue();
-        return new SignUpPage(baseFunc);
+        return new MainPage(baseFunc);
 
     }
 }

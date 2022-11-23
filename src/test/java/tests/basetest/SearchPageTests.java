@@ -50,8 +50,7 @@ public class SearchPageTests extends BasicTest{
         ItemPage itemPage = new ItemPage(baseFunc);
         itemPage.selectSize("8");
         itemPage.quantitySelect("5");
-        itemPage.selectColor(1);
-
+        itemPage.selectColor(2);
 
         itemPage.addToCart();
         String assertion = baseFunc.getText(ADD_TO_CART_SUCC_MES);

@@ -1,5 +1,6 @@
 package com.amazon.pageobject;
 
+import com.amazon.pageobject.SearchPages.SearchPage;
 import com.amazon.pageobject.basefunc.BaseFunc;
 import com.google.common.annotations.VisibleForTesting;
 import org.openqa.selenium.By;
@@ -30,15 +31,18 @@ public class MainPage {
         this.baseFunc=baseFunc;
     }
 
-    public void inputSearchLineType(String text){
+    public MainPage inputSearchLineType(String text){
         baseFunc.type(searchLine , text);
+        return this;
     }
-    public void clickSearch(){
+    public SearchPage clickSearch(){
         baseFunc.click(searchLineBut);
+        return new SearchPage(baseFunc);
     }
 
-    public void clickSignIn(){
+    public SignInPage clickSignIn(){
         baseFunc.click(signInBut);
+        return new SignInPage(baseFunc);
     }
 
 
