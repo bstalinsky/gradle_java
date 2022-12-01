@@ -32,7 +32,7 @@ public abstract class BasicTest {
     }
 
 
-    @AfterClass
+    @AfterTest
     public void tearDown() {
         baseFunc.tearDown();
     }

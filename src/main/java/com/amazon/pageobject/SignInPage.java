@@ -24,7 +24,7 @@ public class SignInPage {
     private final By createAccountSubmit = By.xpath("//a[@id='createAccountSubmit']");
     public static By errorEmail = By.xpath("//h4[text() = 'There was a problem']");
     public static By HELLO_USER = By.id("nav-link-accountList-nav-line-1");
-    private final By assertSignIn = By.xpath("//h1[@class='a-spacing-small']");
+    private final By assertSignIn = By.xpath("//h1[contains(text() , 'Sign in')]");
 
     public SignInPage(BaseFunc baseFunc){
         this.baseFunc=baseFunc;
