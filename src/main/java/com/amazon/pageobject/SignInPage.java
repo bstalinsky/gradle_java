@@ -12,9 +12,10 @@ public class SignInPage {
 
     private final By emailField = By.xpath("//input[@id='ap_email']");
     private final By passwordField = By.xpath("//input[@id='ap_password']");
-    private final By rememberMeCheckbox = By.xpath("//input[@id='ap_password']");
+    private final By rememberMeCheckbox = By.xpath("//input[@name='rememberMe']");
     private final By signInBut = By.xpath("//input[@id='signInSubmit']");
 
+    private final By navBarMenu = By.xpath("//a[@id='nav-link-accountList']");
 
 
 
@@ -23,7 +24,7 @@ public class SignInPage {
     private final By createAccountSubmit = By.xpath("//a[@id='createAccountSubmit']");
     public static By errorEmail = By.xpath("//h4[text() = 'There was a problem']");
     public static By HELLO_USER = By.id("nav-link-accountList-nav-line-1");
-    private final By assertSignIn = By.xpath("//span[contains(text() , 'Hello, BOHDAN1')]");
+    private final By assertSignIn = By.xpath("//h1[@class='a-spacing-small']");
 
     public SignInPage(BaseFunc baseFunc){
         this.baseFunc=baseFunc;
@@ -58,11 +59,12 @@ public class SignInPage {
        return baseFunc.getText(errorEmail);
     }
 
-    public void signInSuccessful() throws InterruptedException {
+    public MainPage signInSuccessful() throws InterruptedException {
 
         String error = getTextEmail();
         Thread.sleep(3000);
         Assert.assertEquals(error, "Hello, BOHDAN1");
+        return new MainPage(baseFunc);
     }
 
     public void invalidPassValid() throws InterruptedException {
@@ -93,5 +95,12 @@ public class SignInPage {
     public String getTextEmail1() throws InterruptedException {
         return baseFunc.findElement(errorEmail).getText();
     }
+
+    public void asserSignOut(){
+       String error =  baseFunc.findElement(assertSignIn).getText();
+       Assert.assertEquals(error , "Sign in");
+    }
+
+
 
 }

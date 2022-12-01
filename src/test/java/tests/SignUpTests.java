@@ -1,4 +1,4 @@
-package tests.basetest;
+package tests;
 
 import com.amazon.pageobject.MainPage;
 import com.amazon.pageobject.SignInPage;
@@ -6,11 +6,12 @@ import com.amazon.pageobject.SignUpPage;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import tests.basetest.BasicTest;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class SignUpTests extends BasicTest{
+public class SignUpTests extends BasicTest {
    public String name = "BOHDAN1";
     String email = "bstalinskyi@gmail.com";
     String password = "Dsaewqxx!!";

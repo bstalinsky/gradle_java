@@ -1,6 +1,7 @@
 package com.amazon.pageobject.basefunc;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -27,13 +28,18 @@ public class BaseFunc {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5000));
     }
 
+    public void moveToElement(By locator){
+        WebElement we = driver.findElement(locator);
+      new Actions(driver)
+              .moveToElement(we).build().perform();
+    }
+
 
     public static void openUrl(String url) {
         driver.get(url);
     }
 
     public void click(By locator) {
-
         WebElement we = wait.until(ExpectedConditions.elementToBeClickable(locator));
         try {
             we.click();
@@ -51,10 +57,10 @@ public class BaseFunc {
         return driver.findElements(locator);
     }
 
-    public void moveToElement(WebElement we) {
+    public void pressKeys(Keys keys ) {
         Actions action = new Actions(driver);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5000));
-        action.moveToElement(we);
+        action.sendKeys(Keys.ENTER).build().perform();
     }
 
     public void type(By locator, String text) {
@@ -68,6 +74,7 @@ public class BaseFunc {
         findElement(locator).sendKeys(key);
 
     }
+
 
     public void selectMultiplieCheckbox(By locator , String... value) {
         List<WebElement> checkboxname = driver.findElements(locator);
@@ -86,8 +93,8 @@ public class BaseFunc {
                 item.click();
             }
         }
-
     }
+
     public void selectAllCheckboxes(By locator){
         List<WebElement> checkboxes = driver.findElements(locator);
         for (WebElement we: checkboxes) {
@@ -143,7 +150,7 @@ public class BaseFunc {
         return driver.findElement(locator).getText();
     }
 
-    public void navigageTo(String url) {
+    public void navigateTo(String url) {
         driver.navigate().to(url);
     }
 
@@ -173,9 +180,7 @@ public class BaseFunc {
                 }
                 break;
             }
-
         }
-
     }
 
     public void chooseCategory1(By locator, String value) {
@@ -195,9 +200,7 @@ public class BaseFunc {
                 }
                 break;
             }
-
         }
-
     }
 
     public void clickByArrayNumb(By locator, int value) {
@@ -211,6 +214,12 @@ public class BaseFunc {
                     elements.get(value);
                 }
 
+        }
+
+        public void switchToTabLast(){
+        for (String tab : driver.getWindowHandles()){
+            driver.switchTo().window(tab);
+        }
         }
 
 

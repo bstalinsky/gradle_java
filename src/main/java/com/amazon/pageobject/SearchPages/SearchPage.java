@@ -1,7 +1,12 @@
 package com.amazon.pageobject.SearchPages;
 
+import com.amazon.pageobject.ItemPage;
+import com.amazon.pageobject.MainPage;
 import com.amazon.pageobject.basefunc.BaseFunc;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.devtools.v85.domstorage.model.Item;
+import org.testng.Assert;
 
 public class SearchPage {
     private BaseFunc baseFunc;
@@ -19,23 +24,31 @@ public class SearchPage {
     private final By BRAND_CHECKBOX = By.xpath("//ul[@aria-labelledby='p_89-title']/li//a/span");
 
 
+
     public SearchPage(BaseFunc baseFunc){
         this.baseFunc=baseFunc;
     }
 
-    public void chooseItem(String value){
+    public ItemPage chooseItem(String value){
         baseFunc.chooseCategory(PRODUCT_SEARCH_LIST , value);
+        return new ItemPage(baseFunc);
     }
-    public void menShoesSize(String value){
+    public SearchPage menShoesSize(String value){
         baseFunc.chooseCategory(MEN_SHOE_SIZE , value);
+        return this;
     }
-    public void inputPriceValue(String min, String max){
+    public SearchPage inputPriceValue(String min, String max){
         baseFunc.type(INPUT_LOW_PRICE , min);
         baseFunc.type(INPUT_HIGH_PRICE , max);
         baseFunc.click(GO_PRICE_BUT);
+        return this;
+
     }
 
-    public void selectCheckboxBRAND(String brand) throws InterruptedException {
+    public SearchPage selectCheckboxBRAND(String brand) throws InterruptedException {
         baseFunc.selectByAttributeCheckbox(BRAND_CHECKBOX , brand);
+        return this;
     }
+
+
 }

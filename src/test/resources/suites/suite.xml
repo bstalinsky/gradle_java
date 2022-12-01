@@ -1,11 +1,10 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="full">
-    <test name="test">
+<suite name="Suite1" verbose="1" >
+    <test name="Regression1"   >
+            <classes>
+                <class name="tests.CartPageTests" />
+            </classes>
+
     </test>
-    
-    <packages>
-        <package name="tests"></package>
-        
-    </packages>
 </suite>
