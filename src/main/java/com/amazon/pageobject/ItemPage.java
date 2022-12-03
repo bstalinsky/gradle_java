@@ -3,8 +3,6 @@ package com.amazon.pageobject;
 import com.amazon.mainpagesteps.pageobjectVerify.MainPageAssert;
 import com.amazon.pageobject.basefunc.BaseFunc;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 
 public class ItemPage {
     private final BaseFunc baseFunc;

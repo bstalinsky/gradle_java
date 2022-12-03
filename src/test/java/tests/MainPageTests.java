@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import tests.basetest.BasicTest;
 
 public class MainPageTests extends BasicTest {
-    private  String VALUE_FOR_NIKE_DUNK = "Nike Womens Dunk Low WMNS DD1503 101 Black/White";
+    private final String MONITORS_ITEMS = "Portable Monitor for Laptop, Full HD IPS 1080P Display Laptop Screen Extender, Dual Laptop Monitor Screen";
 
    @Test
     public SignInPage goToSignIn(){
@@ -29,6 +29,22 @@ public class MainPageTests extends BasicTest {
                 .assertCanadaLocation();
     }
 
+
+    @Test
+    public void e2eComputerCategoryTest() throws InterruptedException {
+       new  MainPage(baseFunc).selectCategory("Computers")
+               .inputSearchLineType("Macbook")
+               .clickSearch()
+               .selectComputerCategory("Computers & Tablets")
+               .inputPriceValue("300", "2500")
+               .chooseItem("Apple MacBook Pro (13-inch, 8GB RAM, 256GB SSD Storage, Magic Keyboard) - Space Gray (Renewed)")
+               .quantitySelect("2")
+               .addToCart()
+               .assertItemAdded()
+               .goToCartBut().deleteBut().deleteButassert();
+
+       Thread.sleep(7000);
+    }
 
 
 

@@ -15,22 +15,18 @@ public class SignInTests extends BasicTest {
                  .clickSignIn()
                  .signIn(email , password)
                  .signInSuccessful().moveToMenuNavBar().signOutBut().asserSignOut();
-
     }
-
     @Test(groups = "negative")
     public void invalidSignInEmail1() throws InterruptedException {
        new MainPage(baseFunc).clickSignIn()
               .invalidEmailType("email")
               .invalidPassValid();
-
     }
 
     @Test(groups = "negative")
     public void invalidSignIn() throws InterruptedException {
         new MainPage(baseFunc).clickSignIn().signIn(email, "password")
                 .invalidPassValid();
-
     }
 
 }

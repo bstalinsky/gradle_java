@@ -6,7 +6,6 @@ import com.amazon.pageobject.basefunc.BaseFunc;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 
 import java.util.List;
 
@@ -22,7 +21,7 @@ public class MainPage {
 
     private final By searchLine = By.xpath("//input[@id='twotabsearchtextbox']");
     private final By searchLineBut = By.xpath("//input[@id='nav-search-submit-button']");
-    private final By searchDropDownBox = By.xpath("//select[@id='searchDropdownBox']/option");
+    private final By searchDropDownBox = By.id("searchDropdownBox");
     private final By amazonLogo = By.xpath("//a[@id='nav-logo-sprites']");
 
     private final By navBarBut = By.xpath("//i[@class='hm-icon nav-sprite']");
@@ -30,12 +29,10 @@ public class MainPage {
     private final By selectRegion = By.id("icp-dropdown");
     private final By navBarMenuList = By.xpath("//ul[@class='hmenu hmenu-visible']//li");
 
-    private final By signInMenuBut = By.xpath("//span[@id='nav-link-accountList-nav-line-1']");
     private final By signInBut = By.xpath("//div[@class='nav-line-1-container']//span[text() = 'Hello, sign in']");
-    private final By signOutBut = By.xpath("//*[text () = 'Sign Out']");
 
     private final By yourAccountList = By.xpath("//*[@id='nav-al-your-account']//a");
-    private final By saleBut = By.xpath("//a[normalize-space()='Sell']");
+    private final By sellBut = By.xpath("//a[normalize-space()='Sell']");
     private final By giftCardBut = By.xpath("//a[contains(text(),'Gift Cards')]");
     private final By todayDeal = By.xpath("//a[@href='/gp/goldbox?ref_=nav_cs_gb']");
     private final By cancelBut = By.xpath("//a[normalize-space()='Cancel']");
@@ -114,7 +111,6 @@ public class MainPage {
     public MainPage selectRegion(String country){
         baseFunc.selectByVisibleText(selectRegion, country);
         baseFunc.pressKeys(Keys.ENTER);
-//        baseFunc.pressKey(selectRegion , Keys.ENTER);
         return new MainPage(baseFunc);
     }
 
@@ -123,6 +119,12 @@ public class MainPage {
         baseFunc.switchToTabLast();
         return new MainPageAssert(baseFunc);
     }
+
+    public MainPage selectCategory(String category){
+        baseFunc.selectByVisibleText(searchDropDownBox, category);
+        return new MainPage(baseFunc);
+    }
+
 
 }
 

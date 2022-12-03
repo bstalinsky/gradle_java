@@ -19,9 +19,8 @@ public class CartPageTests extends BasicTest {
                .addToCart();
     }
     @Test
-    public void deleteItem() throws InterruptedException {
+    public void deleteItem()  {
        new MainPage(baseFunc).goToCartBut().deleteBut().deleteButassert();
-       Thread.sleep(5000);
 
     }
 

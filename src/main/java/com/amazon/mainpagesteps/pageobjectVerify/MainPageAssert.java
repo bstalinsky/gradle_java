@@ -1,5 +1,7 @@
 package com.amazon.mainpagesteps.pageobjectVerify;
 
+import com.amazon.pageobject.CartPage;
+import com.amazon.pageobject.MainPage;
 import com.amazon.pageobject.basefunc.BaseFunc;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,10 +10,12 @@ import org.testng.Assert;
 import static org.testng.Assert.*;
 
 public class MainPageAssert {
-    private BaseFunc baseFunc;
+    private final BaseFunc baseFunc;
     private final By deliveryCountryAssert = By.xpath("//span[@id='glow-ingress-line2']");
     private final By ADD_TO_CART_SUCC_MES = By.xpath("//*[@id='NATC_SMART_WAGON_CONF_MSG_SUCCESS']/span");
     private final By CANADA_LANG_ICON = By.xpath("//span[@class='icp-nav-flag icp-nav-flag-ca icp-nav-flag-discoverability-t1']");
+    private final By VERIFY_NORESULT = By.xpath("//span[contains(text() , 'No results for')]");
+
 
 
 
@@ -36,12 +40,18 @@ public class MainPageAssert {
         assertTrue(assertion1.isDisplayed(), "Element " + assertion1 + "not Displayed");
     }
 
-    public void  assertItemAdded(){
+    public MainPage assertItemAdded(){
         String assertion = baseFunc.getText(ADD_TO_CART_SUCC_MES);
         WebElement assertion1 = baseFunc.findElement(ADD_TO_CART_SUCC_MES);
         assertEquals(assertion, "Added to Cart", "Something wrong");
         assertFalse(assertion.isEmpty(), "Element " + assertion + "is empty");
         assertTrue(assertion1.isDisplayed(), "Element " + assertion1 + "not Displayed");
+        return new MainPage(baseFunc);
+    }
+
+    public void verifyWrongItem(String input){
+      String  verify =   baseFunc.getText(VERIFY_NORESULT);
+        assertEquals(verify + " " + input , "No results for" +" "+ input , "Something wrong");
     }
 
 

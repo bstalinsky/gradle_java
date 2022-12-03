@@ -5,6 +5,9 @@
             <classes>
                 <class name="tests.SignInTests" />
                 <class name="tests.MainPageTests" />
+                <class name="tests.SearchPageTests" />
+                <class name="tests.CartPageTests" />
+<!--                <class name="tests.RegresTest" />-->
             </classes>
     </test>
 </suite>

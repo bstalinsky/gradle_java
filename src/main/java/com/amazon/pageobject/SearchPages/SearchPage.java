@@ -8,9 +8,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.devtools.v85.domstorage.model.Item;
 import org.testng.Assert;
 
+import java.util.List;
+
 public class SearchPage {
-    private BaseFunc baseFunc;
-    private final By PRODUCT_SEARCH_LIST = By.xpath("//div[@class='s-main-slot s-result-list s-search-results sg-row']//div/h2/a/span");
+    private final BaseFunc baseFunc;
+    private final By PRODUCT_SEARCH_LIST = By.xpath("//h2[@class = 'a-size-mini a-spacing-none a-color-base s-line-clamp-2']/a");
 
     // FILTERS CHECKBOXES
     private final By MEN_SHOE_SIZE = By.xpath("//ul[@aria-labelledby='p_n_size_browse-vebin-title']/li//span[@class= 'a-list-item']//a//span//button/span");
@@ -22,6 +24,8 @@ public class SearchPage {
     private final By COLOR_TYPE = By.xpath("//ul[@aria-labelledby='p_n_size_two_browse-vebin-title']//span/a");
     private final By SELLER_CHECKBOX = By.xpath("//ul[@aria-labelledby = 'p_6-title']/li/span/a");
     private final By BRAND_CHECKBOX = By.xpath("//ul[@aria-labelledby='p_89-title']/li//a/span");
+    private final By COMPUTER_LIST = By.xpath("//a[@data-routing = 'off']");
+    private final By Monitors_category = By.id("n/1292115011");
 
 
 
@@ -34,7 +38,7 @@ public class SearchPage {
         return new ItemPage(baseFunc);
     }
     public SearchPage menShoesSize(String value){
-        baseFunc.chooseCategory(MEN_SHOE_SIZE , value);
+        baseFunc.selectByTextCheckbox(MEN_SHOE_SIZE , value);
         return this;
     }
     public SearchPage inputPriceValue(String min, String max){
@@ -46,8 +50,18 @@ public class SearchPage {
     }
 
     public SearchPage selectCheckboxBRAND(String brand) throws InterruptedException {
-        baseFunc.selectByAttributeCheckbox(BRAND_CHECKBOX , brand);
+        baseFunc.selectByTextCheckbox(BRAND_CHECKBOX , brand);
         return this;
+    }
+    public SearchPage selectComputerCategory(String value){
+        baseFunc.chooseCategory(COMPUTER_LIST , value);
+//        baseFunc.findElements(COMPUTER_LIST).get(5).click();
+        return new SearchPage(baseFunc);
+    }
+
+    public SearchPage selectMonitors(){
+        baseFunc.findElement(Monitors_category).click();
+        return new SearchPage(baseFunc);
     }
 
 

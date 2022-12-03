@@ -102,15 +102,15 @@ public class BaseFunc {
         }
     }
 
-    public void selectByAttributeCheckbox(By locator , String value ) {
+    public void selectByTextCheckbox(By locator , String value ) {
         List<WebElement> checkboxes = driver.findElements(locator);
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         for (WebElement we : checkboxes) {
             String checkboxname = we.getText();
-            System.out.println("Checkbox name : "+ checkboxname);
             if (checkboxname.equals(value))
                 try {
                     we.click();
+                    System.out.println("Select checkbox : " + checkboxname);
                     break;
                 } catch (org.openqa.selenium.StaleElementReferenceException e) {
                     System.out.println("Can't click");
@@ -155,14 +155,6 @@ public class BaseFunc {
     }
 
 
-    public void alertOK(){
-        JavascriptExecutor js = (JavascriptExecutor)driver;
-        js  .executeAsyncScript("confirm", "Are you sure?");
-        Alert alert = driver.switchTo().alert();
-        alert.accept();
-    }
-
-
     public void chooseCategory(By locator, String value) {
         driver.findElement(locator);
         WebElement element = driver.findElement(locator);
@@ -170,8 +162,9 @@ public class BaseFunc {
         List<WebElement> elements = element.findElements(locator);
         boolean flag = false;
         for (WebElement item : elements) {
+                System.out.println("Text " + item.getText());
             if (item.getText().contains(value)) {
-                System.out.println("Checkbox name : "+ item.getText());
+                System.out.println("Name  : "+ item.getText());
                 flag = true;
                 try {
                     item.click();
