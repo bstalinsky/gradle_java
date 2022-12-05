@@ -62,7 +62,6 @@ public class SignInPage {
     public MainPage signInSuccessful() throws InterruptedException {
 
         String error = getTextEmail();
-        Thread.sleep(3000);
         Assert.assertEquals(error, "Hello, BOHDAN1");
         return new MainPage(baseFunc);
     }

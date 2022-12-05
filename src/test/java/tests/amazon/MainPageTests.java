@@ -30,7 +30,7 @@ public class MainPageTests extends BasicTest {
 
 
     @Test
-    public void e2eComputerCategoryTest() throws InterruptedException {
+    public void e2eComputerCategoryTest() {
 //       deliveryChangeMenuSelect();
        new  MainPage(baseFunc).selectCategory("Computers")
                .inputSearchLineType("Macbook")
@@ -43,7 +43,6 @@ public class MainPageTests extends BasicTest {
                .assertItemAdded()
                .goToCartBut().deleteBut().deleteButassert();
 
-       Thread.sleep(7000);
     }
 
 

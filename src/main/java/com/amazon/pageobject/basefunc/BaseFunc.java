@@ -15,6 +15,7 @@ import org.testng.Assert;
 import java.time.Duration;
 import java.util.List;
 
+import static com.amazon.common.Config.CLEAR_COOKIES_AND_STORAGE;
 import static com.amazon.common.Config.PLATFORM_AND_BROWSER;
 
 public class BaseFunc {
@@ -72,6 +73,16 @@ public class BaseFunc {
             System.out.println("Can't click");
             we.click();
         }
+    }
+
+    public void cleanCookies(){
+        LOGGER.info("CLEAN COOKIES");
+        if (CLEAR_COOKIES_AND_STORAGE){
+            JavascriptExecutor js = (JavascriptExecutor)driver;
+            driver.manage().deleteAllCookies();
+            js.executeScript("window.sessionStorage.clear()");
+        }
+
     }
 
     public WebElement findElement(By locator) {

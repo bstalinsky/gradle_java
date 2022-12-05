@@ -22,14 +22,20 @@ public abstract class BasicTest {
 
     @BeforeClass
     public void deliveryChangeMenuSelect() throws InterruptedException {
+        BaseFunc.openUrl(HOME_PAGE_URL);
         new MainPage(baseFunc).clickOnDeliverTo()
                 .selectDeliveryCountry("Canada").clickDoneBut().verifyDeliveryCountry();
     }
 
 
-    @AfterMethod
+    @BeforeMethod
     public void openUrl(){
         BaseFunc.openUrl(HOME_PAGE_URL);
+
+    }
+    @AfterClass
+    public void cleanCookies(){
+        baseFunc.cleanCookies();
     }
 
 
