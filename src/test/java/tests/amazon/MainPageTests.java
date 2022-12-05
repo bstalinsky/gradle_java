@@ -31,11 +31,12 @@ public class MainPageTests extends BasicTest {
 
     @Test
     public void e2eComputerCategoryTest() throws InterruptedException {
+       deliveryChangeMenuSelect();
        new  MainPage(baseFunc).selectCategory("Computers")
                .inputSearchLineType("Macbook")
                .clickSearch()
                .selectComputerCategory("Computers & Tablets")
-               .inputPriceValue("300", "2500")
+               .inputPriceValue("300", "3000")
                .chooseItem("Apple MacBook Pro (13-inch, 8GB RAM, 256GB SSD Storage, Magic Keyboard) - Space Gray (Renewed)")
 //               .quantitySelect("2")
                .addToCart()
