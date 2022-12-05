@@ -3,11 +3,11 @@
 <suite name="Suite1" verbose="1" >
     <test name="SmokeTests"   >
             <classes>
-                <class name="tests.SignInTests" />
-                <class name="tests.MainPageTests" />
-                <class name="tests.SearchPageTests" />
-                <class name="tests.CartPageTests" />
-<!--                <class name="tests.RegresTest" />-->
+                <class name="tests.amazon.SignInTests" />
+                <class name="tests.amazon.MainPageTests" />
+                <class name="tests.amazon.SearchPageTests" />
+                <class name="tests.amazon.CartPageTests" />
+<!--                <class name="tests.api.RegresTest" />-->
             </classes>
     </test>
 </suite>
