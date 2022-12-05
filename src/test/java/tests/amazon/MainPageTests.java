@@ -31,7 +31,7 @@ public class MainPageTests extends BasicTest {
 
     @Test
     public void e2eComputerCategoryTest() throws InterruptedException {
-       deliveryChangeMenuSelect();
+//       deliveryChangeMenuSelect();
        new  MainPage(baseFunc).selectCategory("Computers")
                .inputSearchLineType("Macbook")
                .clickSearch()
