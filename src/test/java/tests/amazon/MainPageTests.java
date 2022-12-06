@@ -29,7 +29,7 @@ public class MainPageTests extends BasicTest {
     }
 
 
-    @Test(groups = {"smoke"}, priority = 3)
+    @Test(groups = {"sanity"}, priority = 3)
     public void e2eComputerCategoryTest() {
 //       deliveryChangeMenuSelect();
        new  MainPage(baseFunc).selectCategory("Computers")
