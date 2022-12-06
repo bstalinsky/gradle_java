@@ -14,7 +14,7 @@ public abstract class BasicTest {
 //    protected static WebDriver driver = CommonActions.createDriver();
     public BaseFunc baseFunc = new BaseFunc();
 
-    @BeforeTest
+    @BeforeTest(alwaysRun = true)
     public void setUp() {
         baseFunc.setUP();
         BaseFunc.openUrl(HOME_PAGE_URL);
@@ -28,7 +28,7 @@ public abstract class BasicTest {
     }
 
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void openUrl(){
         BaseFunc.openUrl(HOME_PAGE_URL);
 
@@ -39,7 +39,7 @@ public abstract class BasicTest {
     }
 
 
-    @AfterTest
+    @AfterTest(alwaysRun = true)
     public void tearDown() {
         baseFunc.tearDown();
     }

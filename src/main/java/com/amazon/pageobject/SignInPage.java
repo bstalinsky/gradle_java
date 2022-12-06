@@ -59,14 +59,14 @@ public class SignInPage {
        return baseFunc.getText(errorEmail);
     }
 
-    public MainPage signInSuccessful() throws InterruptedException {
+    public MainPage signInSuccessful()   {
 
         String error = getTextEmail();
         Assert.assertEquals(error, "Hello, BOHDAN1");
         return new MainPage(baseFunc);
     }
 
-    public void invalidPassValid() throws InterruptedException {
+    public void invalidPassValid()  {
         String error1 = getTextEmail1();
         assertEquals(error1, "There was a problem");
     }
@@ -80,6 +80,7 @@ public class SignInPage {
         return new SignInPage(baseFunc);
 //        this.typePassword(password);
     }
+    
 
     public SignInPage invalidEmailType(String email){
         this.typeEmail(email);
@@ -87,11 +88,11 @@ public class SignInPage {
         return new SignInPage(baseFunc);
     }
 
-    public String getTextEmail() throws InterruptedException {
+    public String getTextEmail()  {
        return baseFunc.findElement(HELLO_USER).getText();
     }
 
-    public String getTextEmail1() throws InterruptedException {
+    public String getTextEmail1()  {
         return baseFunc.findElement(errorEmail).getText();
     }
 

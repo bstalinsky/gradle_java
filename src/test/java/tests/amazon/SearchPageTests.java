@@ -16,7 +16,7 @@ public class SearchPageTests extends BasicTest {
 
     private String VERIFY_NO_RESULTS = "тестинг11";
 
-    @Test
+    @Test(groups = {"smoke"})
     public void findNikeCategory() {
         new MainPage(baseFunc).inputSearchLineType("Jordan retro")
                 .clickSearch();
@@ -24,14 +24,14 @@ public class SearchPageTests extends BasicTest {
         Assert.assertEquals("Nike dunk", "Nike dunk");
     }
 
-    @Test
+    @Test(groups = {"smoke"})
     public void selectNikeItem() {
         mainPage.inputSearchLineType("Nike Dunk low")
                 .clickSearch().chooseItemFullMenu("Nike Dunk Low Retro Mens Style : Dd1391");
         Assert.assertEquals("Nike dunk", "Nike dunk");
     }
 
-    @Test
+    @Test(groups = {"smoke"})
     public void selectAdidasAndFilters() throws InterruptedException {
         new MainPage(baseFunc)
                 .inputSearchLineType("shoes").clickSearch()
@@ -52,7 +52,7 @@ public class SearchPageTests extends BasicTest {
                 .assertItemAdded();
     }
 
-    @Test
+    @Test(groups = {"smoke"})
     public void inputWrongItemIntoSearchLine(){
         new MainPage(baseFunc).selectCategory("Deals")
                 .inputSearchLineType("тестинг11").clickSearch();

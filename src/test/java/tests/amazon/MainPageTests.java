@@ -7,7 +7,7 @@ import tests.basetest.BasicTest;
 
 public class MainPageTests extends BasicTest {
 
-   @Test
+   @Test(groups = {"smoke"}, priority = 4)
     public SignInPage goToSignIn(){
         MainPage mainPage = new MainPage(baseFunc);
         mainPage.clickSignIn();
@@ -15,13 +15,13 @@ public class MainPageTests extends BasicTest {
 
     }
 
-    @Test
+    @Test(groups = {"smoke"}, priority = 2)
     public void deliveryChangeMenuSelect() throws InterruptedException {
        new MainPage(baseFunc).clickOnDeliverTo()
                .selectDeliveryCountry("Canada").clickDoneBut().verifyDeliveryCountry();
     }
 
-    @Test
+    @Test(groups = {"smoke"}, priority = 1)
     public void changeCountryLegion() {
         new MainPage(baseFunc).moveToLangMenu().clickChangeCountyRegion()
                 .selectRegion("Canada").clickGoToWebsite()
@@ -29,7 +29,7 @@ public class MainPageTests extends BasicTest {
     }
 
 
-    @Test
+    @Test(groups = {"smoke"}, priority = 3)
     public void e2eComputerCategoryTest() {
 //       deliveryChangeMenuSelect();
        new  MainPage(baseFunc).selectCategory("Computers")

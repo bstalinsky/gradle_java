@@ -2,12 +2,21 @@
 
 <suite name="Suite1" verbose="1" >
     <test name="SmokeTests"   >
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
             <classes>
-                <class name="tests.amazon.SignInTests" />
-                <class name="tests.amazon.MainPageTests" />
-                <class name="tests.amazon.SearchPageTests" />
-                <class name="tests.amazon.CartPageTests" />
-<!--                <class name="tests.api.RegresTest" />-->
+                <class name="tests.amazon.MainPageTests" >
+                    <methods>
+<!--                        <include name="">-->
+<!--                        </include>-->
+                    </methods>
+            </class>
+<!--                <class name="tests.amazon.MainPageTests" />-->
+<!--                <class name="tests.amazon.SearchPageTests" />-->
+<!--                <class name="tests.amazon.CartPageTests" />-->
             </classes>
     </test>
 </suite>

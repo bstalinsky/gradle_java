@@ -9,22 +9,22 @@ public class SignInTests extends BasicTest {
     public static String password = "Dsaewqxx!!";
     String ERROR_TXT = "There was a problem";
 
-    @Test(groups = "positive")
+    @Test(groups = {"positive"})
     public void clickToSignInSignOut() throws InterruptedException {
          new MainPage(baseFunc)
                  .clickSignIn()
                  .signIn(email , password)
                  .signInSuccessful().moveToMenuNavBar().signOutBut().asserSignOut();
     }
-    @Test(groups = "negative")
-    public void invalidSignInEmail1() throws InterruptedException {
+    @Test(groups = {"negative", "smoke"})
+    public void invalidSignInEmail1()   {
        new MainPage(baseFunc).clickSignIn()
               .invalidEmailType("email")
               .invalidPassValid();
     }
 
-    @Test(groups = "negative")
-    public void invalidSignIn() throws InterruptedException {
+    @Test(groups = {"negative"})
+    public void invalidSignIn()  {
         new MainPage(baseFunc).clickSignIn().signIn(email, "password")
                 .invalidPassValid();
     }
