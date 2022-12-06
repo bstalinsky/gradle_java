@@ -8,12 +8,15 @@
             </run>
         </groups>
             <classes>
-                <class name="tests.amazon.MainPageTests" >
-                    <methods>
+                <class name="tests.amazon.MainPageTests" />
+                    <class name="tests.amazon.MainPageTests" />
+                    <class name="tests.amazon.SearchPageTests" />
+                    <class name="tests.amazon.CartPageTests" />
+<!--                    <methods>-->
 <!--                        <include name="">-->
 <!--                        </include>-->
-                    </methods>
-            </class>
+<!--                    </methods>-->
+<!--            </class>-->
 <!--                <class name="tests.amazon.MainPageTests" />-->
 <!--                <class name="tests.amazon.SearchPageTests" />-->
 <!--                <class name="tests.amazon.CartPageTests" />-->
