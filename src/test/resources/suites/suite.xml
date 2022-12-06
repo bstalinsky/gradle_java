@@ -8,7 +8,6 @@
             </run>
         </groups>
             <classes>
-                <class name="tests.amazon.MainPageTests" />
                     <class name="tests.amazon.MainPageTests" />
                     <class name="tests.amazon.SearchPageTests" />
                     <class name="tests.amazon.CartPageTests" />
