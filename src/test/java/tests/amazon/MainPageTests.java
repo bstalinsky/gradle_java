@@ -15,6 +15,16 @@ public class MainPageTests extends BasicTest {
 
     }
 
+    @Test(groups = {"smoke"} , priority = 5)
+    public void checkLogo(){
+       new MainPage(baseFunc).logoIsDisplayed().verifyLogo();
+    }
+
+    @Test(groups = {"smoke"} , priority = 6)
+    public void checkGetTitle(){
+        new MainPage(baseFunc).getTitle().getTitleAssert();
+    }
+
     @Test(groups = {"smoke"}, priority = 2)
     public void deliveryChangeMenuSelect() throws InterruptedException {
        new MainPage(baseFunc).clickOnDeliverTo()

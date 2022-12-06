@@ -47,6 +47,16 @@ public class MainPage {
         this.baseFunc=baseFunc;
     }
 
+
+    public MainPageAssert logoIsDisplayed(){
+        baseFunc.findElement(amazonLogo).click();
+                return new MainPageAssert(baseFunc);
+    }
+    public MainPageAssert getTitle(){
+        baseFunc.getTitle("Amazon.com. Spend less. Smile more.");
+        return new MainPageAssert(baseFunc);
+    }
+
     public MainPage inputSearchLineType(String text){
         baseFunc.type(searchLine , text);
         return this;
@@ -68,7 +78,7 @@ public class MainPage {
         baseFunc.click(GoTocartButton);
         return new CartPage(baseFunc);
     }
-    public SignInPage signOutBut() throws InterruptedException {
+    public SignInPage signOutBut() {
         List<WebElement> webElementList = baseFunc.findElements(yourAccountList);
         webElementList.get(12)
                 .click();

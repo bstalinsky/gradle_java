@@ -28,11 +28,10 @@ public class SearchPageTests extends BasicTest {
     public void selectNikeItem() {
         mainPage.inputSearchLineType("Nike Dunk low")
                 .clickSearch().chooseItemFullMenu("Nike Dunk Low Retro Mens Style : Dd1391");
-        Assert.assertEquals("Nike dunk", "Nike dunk");
     }
 
     @Test(groups = {"smoke"})
-    public void selectAdidasAndFilters() throws InterruptedException {
+    public void selectAdidasAndFilters() {
         new MainPage(baseFunc)
                 .inputSearchLineType("shoes").clickSearch()
                 .selectCheckboxBRAND("adidas")
@@ -42,7 +41,7 @@ public class SearchPageTests extends BasicTest {
     }
 
     @Test
-    public void addItemToCartWithFilters() throws InterruptedException {
+    public void addItemToCartWithFilters() {
         selectAdidasAndFilters();
         new SearchPage(baseFunc).chooseItemFullMenu("adidas Men's Kaptir 2.0 Running Shoe")
                         .selectSize("8")

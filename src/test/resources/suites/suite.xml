@@ -15,10 +15,6 @@
 <!--                        <include name="">-->
 <!--                        </include>-->
 <!--                    </methods>-->
-<!--            </class>-->
-<!--                <class name="tests.amazon.MainPageTests" />-->
-<!--                <class name="tests.amazon.SearchPageTests" />-->
-<!--                <class name="tests.amazon.CartPageTests" />-->
             </classes>
     </test>
 </suite>

@@ -4,11 +4,12 @@ import com.amazon.pageobject.ItemPage;
 import com.amazon.pageobject.basefunc.BaseFunc;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 
 public class SearchPage {
     private final BaseFunc baseFunc;
     private final By PRODUCT_SEARCH_LIST = By.xpath("//h2[@class = 'a-size-mini a-spacing-none a-color-base s-line-clamp-2']/a");
-    private final By PRODUCT_SEARCH_LIST_FULL = By.xpath("//span[@class = 'a-size-base-plus a-color-base a-text-normal']");
+    private final By PRODUCT_SEARCH_LIST_FULL = By.xpath("//a//span[@class = 'a-size-base-plus a-color-base a-text-normal']");
 
     // FILTERS CHECKBOXES
     private final By MEN_SHOE_SIZE = By.xpath("//ul[@aria-labelledby='p_n_size_browse-vebin-title']/li//span[@class= 'a-list-item']//a//span//button/span");
@@ -30,12 +31,20 @@ public class SearchPage {
     }
 
     public ItemPage chooseItem(String value){
-        baseFunc.chooseCategory(PRODUCT_SEARCH_LIST, value);
+        try {
+            baseFunc.chooseCategory(PRODUCT_SEARCH_LIST, value);
+        } catch (StaleElementReferenceException e){
+            System.out.println("Cant found");
+        }
         return new ItemPage(baseFunc);
     }
 
-    public ItemPage chooseItemFullMenu(String value){
-        baseFunc.chooseCategory(PRODUCT_SEARCH_LIST_FULL, value);
+    public ItemPage chooseItemFullMenu(String value) {
+        try {
+            baseFunc.chooseCategory(PRODUCT_SEARCH_LIST_FULL, value);
+        } catch (StaleElementReferenceException e) {
+            baseFunc.chooseCategory(PRODUCT_SEARCH_LIST_FULL, value);
+        }
         return new ItemPage(baseFunc);
     }
 
@@ -51,7 +60,7 @@ public class SearchPage {
 
     }
 
-    public SearchPage selectCheckboxBRAND(String brand) throws InterruptedException {
+    public SearchPage selectCheckboxBRAND(String brand)  {
         baseFunc.selectByTextCheckbox(BRAND_CHECKBOX , brand);
         return this;
     }

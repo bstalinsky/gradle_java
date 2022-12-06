@@ -30,6 +30,7 @@ public class ItemPage {
         return this;
     }
 
+
     public MainPageAssert addToCart(){
         baseFunc.click(ADD_TO_CART_BUT);
         return new MainPageAssert(baseFunc);
