@@ -1,5 +1,6 @@
 package com.amazon.pageobject.basefunc;
 
+import com.amazon.common.CommonActions;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
@@ -21,7 +22,7 @@ import static com.amazon.common.Config.PLATFORM_AND_BROWSER;
 public class BaseFunc {
 
 
-    protected static WebDriver driver;
+    protected static WebDriver driver ;
     private static WebDriverWait wait;
     private final Logger LOGGER = LogManager.getLogger(this.getClass());
 
@@ -31,6 +32,7 @@ public class BaseFunc {
 
 
     public void setUP() {
+        System.out.println("test");
         switch (PLATFORM_AND_BROWSER) {
             case "win_chrome":
                 System.setProperty("webdriver.chrome.driver", "C:/Users/bohdan.stalinskyi/IdeaProjects/gradle_java/src/main/resources/chromedriver.exe");

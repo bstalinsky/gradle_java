@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class MainPage {
+public class MainPage extends BaseFunc{
     protected BaseFunc baseFunc;
     private final By dissmissCountry = By.xpath("//input[@data-action-params='{'toasterType':'IS_INGRESS'}']");
     private final By deliverToMenu = By.xpath("//a[@id='nav-global-location-popover-link']");

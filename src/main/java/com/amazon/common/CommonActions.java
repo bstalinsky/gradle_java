@@ -11,8 +11,7 @@ import java.time.Duration;
 
 import static com.amazon.common.Config.PLATFORM_AND_BROWSER;
 public class CommonActions {
-//    public WebDriver driver;
-//
+
 //    public static WebDriver createDriver() {
 //     WebDriver driver = null;
 //
