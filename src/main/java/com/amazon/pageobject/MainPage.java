@@ -3,6 +3,7 @@ package com.amazon.pageobject;
 import com.amazon.mainpagesteps.pageobjectVerify.MainPageAssert;
 import com.amazon.pageobject.SearchPages.SearchPage;
 import com.amazon.pageobject.basefunc.BaseFunc;
+import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -11,6 +12,8 @@ import java.util.List;
 
 public class MainPage extends BaseFunc{
     protected BaseFunc baseFunc;
+    private final org.apache.logging.log4j.Logger LOGGER = LogManager.getLogger(this.getClass());
+
     private final By dissmissCountry = By.xpath("//input[@data-action-params='{'toasterType':'IS_INGRESS'}']");
     private final By deliverToMenu = By.xpath("//a[@id='nav-global-location-popover-link']");
     private final By cartButton = By.xpath("//span[@id='nav-cart-count']");
@@ -24,7 +27,7 @@ public class MainPage extends BaseFunc{
     private final By searchDropDownBox = By.id("searchDropdownBox");
     private final By amazonLogo = By.xpath("//a[@id='nav-logo-sprites']");
 
-    private final By navBarBut = By.xpath("//i[@class='hm-icon nav-sprite']");
+    private final By hamburgerMenu = By.xpath("//a[@id='nav-hamburger-menu']");
     private final By langMenu = By.xpath("//span[@class='icp-nav-link-inner']//span[@class='nav-line-2']");
     private final By selectRegion = By.id("icp-dropdown");
     private final By navBarMenuList = By.xpath("//ul[@class='hmenu hmenu-visible']//li");
@@ -41,10 +44,27 @@ public class MainPage extends BaseFunc{
     private final By navBarMenu = By.xpath("//a[@id='nav-link-accountList']");
     private final By changeRegionLang = By.xpath("//div[text() = 'Change country/region.']");
 
+    private final By giftCardMenu = By.xpath("//ul[@class='hmenu hmenu-visible hmenu-translateX']/li");
+
 
 
     public MainPage(BaseFunc baseFunc){
         this.baseFunc=baseFunc;
+    }
+
+    public MainPage clickOnHamberMenu(){
+        baseFunc.click(hamburgerMenu);
+        return  this;
+    }
+
+    public MainPage selectGiftCardsSubCategory(){
+        baseFunc.chooseCategory(giftCardMenu, "eGift cards");
+        return  this;
+    }
+
+    public MainPageAssert selectCatFromHamMenu(){
+        baseFunc.chooseCategory(navBarMenuList, "Gift Cards");
+        return new MainPageAssert(baseFunc);
     }
 
 
@@ -64,6 +84,13 @@ public class MainPage extends BaseFunc{
     public SearchPage clickSearch(){
         baseFunc.click(searchLineBut);
         return new SearchPage(baseFunc);
+    }
+
+    public void clickOnSearch20times(){
+      WebElement we =  baseFunc.findElement(searchLineBut);
+        for (int i = 0 ; i < 20 ; i++ ){
+            baseFunc.click(searchLineBut);}
+
     }
 
     public SignInPage clickSignIn(){

@@ -60,6 +60,7 @@ public class SearchPage {
 
     }
 
+
     public SearchPage selectCheckboxBRAND(String brand)  {
         baseFunc.selectByTextCheckbox(BRAND_CHECKBOX , brand);
         return this;

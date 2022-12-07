@@ -9,6 +9,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+import java.util.List;
+
 import static org.testng.Assert.*;
 
 public class MainPageAssert {
@@ -19,6 +21,8 @@ public class MainPageAssert {
     private final By CANADA_LANG_ICON = By.xpath("//span[@class='icp-nav-flag icp-nav-flag-ca icp-nav-flag-discoverability-t1']");
     private final By VERIFY_NORESULT = By.xpath("//span[contains(text() , 'No results for')]");
     private final By amazonLogo = By.xpath("//a[@id='nav-logo-sprites']");
+    private final By giftCardMenu = By.xpath("//ul[@class='hmenu hmenu-visible hmenu-translateX']/li");
+
 
 
 
@@ -77,6 +81,14 @@ public class MainPageAssert {
 
     public MainPageAssert (BaseFunc baseFunc){
         this.baseFunc=baseFunc;
+    }
+
+    public MainPage verifyGiftCardsElementPresent(){
+        List<WebElement> elements = baseFunc.findElements(giftCardMenu);
+        int size = elements.size();
+        assertEquals(size, 14, "WRONG SIZE");
+        LOGGER.info("SubCategory size :" + size);
+        return new MainPage(baseFunc);
     }
 
 

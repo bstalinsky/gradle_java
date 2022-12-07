@@ -38,6 +38,12 @@ public class MainPageTests extends BasicTest {
                 .assertCanadaLocation();
     }
 
+    @Test(groups = {"smoke"}, priority = 7)
+    public void checkHumberMenu()  {
+       new MainPage(baseFunc).clickOnHamberMenu().selectCatFromHamMenu()
+               .verifyGiftCardsElementPresent().selectGiftCardsSubCategory();
+    }
+
 
     @Test(groups = {"sanity"}, priority = 3)
     public void e2eComputerCategoryTest() {

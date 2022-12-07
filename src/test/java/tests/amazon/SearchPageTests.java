@@ -4,6 +4,7 @@ import com.amazon.mainpagesteps.pageobjectVerify.MainPageAssert;
 import com.amazon.pageobject.ItemPage;
 import com.amazon.pageobject.MainPage;
 import com.amazon.pageobject.SearchPages.SearchPage;
+import io.qameta.allure.Description;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -28,6 +29,11 @@ public class SearchPageTests extends BasicTest {
     public void selectNikeItem() {
         mainPage.inputSearchLineType("Nike Dunk low")
                 .clickSearch().chooseItemFullMenu("Nike Dunk Low Retro Mens Style : Dd1391");
+    }
+    @Test(groups = {"smoke"}, priority = 6)
+    @Description("Click on Search button 20 times")
+    public void clickOnSearchButton20times(){
+        new MainPage(baseFunc).clickOnSearch20times();
     }
 
     @Test(groups = {"smoke"}, priority = 3)
