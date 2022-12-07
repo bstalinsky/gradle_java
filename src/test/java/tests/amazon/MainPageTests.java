@@ -31,7 +31,7 @@ public class MainPageTests extends BasicTest {
                .selectDeliveryCountry("Canada").clickDoneBut().verifyDeliveryCountry();
     }
 
-    @Test(groups = {"sanity"}, priority = 1)
+    @Test(groups = {"smoke"}, priority = 1)
     public void changeCountryLegion() {
         new MainPage(baseFunc).moveToLangMenu().clickChangeCountyRegion()
                 .selectRegion("Canada").clickGoToWebsite()
