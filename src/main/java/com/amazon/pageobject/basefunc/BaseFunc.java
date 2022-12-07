@@ -32,7 +32,7 @@ public class BaseFunc {
 
 
     public void setUP() {
-        System.out.println("test");
+        System.out.println("test123431");
         switch (PLATFORM_AND_BROWSER) {
             case "win_chrome":
                 System.setProperty("webdriver.chrome.driver", "C:/Users/bohdan.stalinskyi/IdeaProjects/gradle_java/src/main/resources/chromedriver.exe");
