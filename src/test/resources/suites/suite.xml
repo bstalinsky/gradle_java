@@ -12,6 +12,7 @@
                     <class name="tests.amazon.MainPageTests" />
                     <class name="tests.amazon.SearchPageTests" />
                     <class name="tests.amazon.CartPageTests" />
+                    <class name="tests.amazon.SignInTests" />
 <!--                    <methods>-->
 <!--                        <include name="">-->
 <!--                        </include>-->
