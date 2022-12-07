@@ -42,7 +42,7 @@ public class SearchPageTests extends BasicTest {
 
     @Test(groups = {"smoke"}, priority = 4, dependsOnMethods = {"selectAdidasAndFilters"})
     public void addItemToCartWithFilters() {
-//        selectAdidasAndFilters();
+        selectAdidasAndFilters();
         new SearchPage(baseFunc).chooseItemFullMenu("adidas Men's Kaptir 2.0 Running Shoe")
                         .selectSize("8")
 //                .quantitySelect("2")
