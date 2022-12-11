@@ -19,4 +19,15 @@
 <!--                    </methods>-->
             </classes>
     </test>
+
+    <test name="Negative tests" verbose="2">
+        <groups>
+            <run>
+                <include name="negative"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.amazon.SignInTests"/>
+        </classes>
+    </test>
 </suite>

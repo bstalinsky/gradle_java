@@ -3,7 +3,7 @@
 <suite name="API" verbose="1" >
     <test name="API-TESTS"   >
         <classes>
-            <class name="tests.api.RegresTest" />
+            <class name="tests.api.RegresPojoTest" />
         </classes>
     </test>
 </suite>

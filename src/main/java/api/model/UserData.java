@@ -1,12 +1,13 @@
 package api.model;
 
 public class UserData {
-    private final int id;
-    private final String email;
-    private final String first_name;
-    private final String last_name;
-    private final String avatar;
+    private  int id;
+    private  String email;
+    private  String first_name;
+    private  String last_name;
+    private  String avatar;
 
+    public UserData() {}
     public UserData(int  id, String email, String first_name, String last_name, String avatar) {
         this.id = id;
         this.email = email;
