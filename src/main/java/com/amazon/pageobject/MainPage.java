@@ -3,6 +3,7 @@ package com.amazon.pageobject;
 import com.amazon.mainpagesteps.pageobjectVerify.MainPageAssert;
 import com.amazon.pageobject.SearchPages.SearchPage;
 import com.amazon.pageobject.basefunc.BaseFunc;
+import com.amazon.pageobject.signInMenu.SignInPage;
 import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -17,7 +18,7 @@ public class MainPage extends BaseFunc{
     private final By dissmissCountry = By.xpath("//input[@data-action-params='{'toasterType':'IS_INGRESS'}']");
     private final By deliverToMenu = By.xpath("//a[@id='nav-global-location-popover-link']");
     private final By cartButton = By.xpath("//span[@id='nav-cart-count']");
-    private final By GoTocartButton = By.xpath("//a[contains(text() , 'Go to Cart')]");
+    private final By GoTocartButton = By.xpath("//span[@id = 'sw-gtc']//a[contains(text() , 'Go to Cart')]");
     private final By shipToCountry = By.cssSelector("#GLUXCountryList");
     private final By doneBut = By.xpath("//button[@name='glowDoneButton']");
     private final By countryList = By.id("//span[@role='radiogroup']");
@@ -161,6 +162,10 @@ public class MainPage extends BaseFunc{
         baseFunc.selectByVisibleText(searchDropDownBox, category);
         return new MainPage(baseFunc);
     }
+
+//    public MainPage mainPageContentTest(){
+//        baseFunc.
+//    }
 
 
 }

@@ -1,9 +1,8 @@
 package tests.amazon;
 
 import com.amazon.pageobject.MainPage;
-import com.amazon.pageobject.SignInPage;
+import com.amazon.pageobject.signInMenu.SignInPage;
 import com.amazon.pageobject.SignUpPage;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
@@ -28,8 +27,8 @@ public class SignUpTests extends BasicTest {
     }
     @Ignore
 
-    @Test
-    public void successfulSignUP() throws InterruptedException {
+    @Test(enabled = false)
+    public void successfulSignUP()  {
         SignUpPage signUpPage = new SignUpPage(baseFunc);
         signUpPage.register(name, email, password, password_re);
     }
@@ -42,7 +41,6 @@ public class SignUpTests extends BasicTest {
         assertEquals(errorEmail, "Wrong or Invalid email address or mobile phone number. Please correct and try again.");
         String errorPassword = signUpPage.getPasswordMustMatch();
         assertEquals(errorPassword, "Passwords must match");
-        ;
     }
     @Ignore
     @Test

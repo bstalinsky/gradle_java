@@ -22,13 +22,16 @@ public class MainPageAssert {
     private final By VERIFY_NORESULT = By.xpath("//span[contains(text() , 'No results for')]");
     private final By amazonLogo = By.xpath("//a[@id='nav-logo-sprites']");
     private final By giftCardMenu = By.xpath("//ul[@class='hmenu hmenu-visible hmenu-translateX']/li");
+    private final By navBarMenu = By.xpath("//div[@id='nav-xshop']/a");
+    private final By getTextTodayDeals = By.xpath("//a[@href='/gp/goldbox?ref_=nav_cs_gb']");
+    private final By getCustomerService = By.xpath("//a[contains(text() , 'Customer Service')]");
+    private final By getGiftCards = By.xpath("//a[contains(text(),'Gift Cards')]");
+    private final By getRegistry = By.xpath("//a[normalize-space()='Registry']");
+    private final By getSell = By.xpath("//a[normalize-space()='Sell']");
+    private final By footerElements = By.xpath("//div[@aria-label='More on Amazon.com']/table//tr/td");
 
 
-
-
-
-
-    public String getTextDelivery(){
+    public String getTextDelivery() {
         return baseFunc.getText(deliveryCountryAssert);
     }
 
@@ -41,7 +44,7 @@ public class MainPageAssert {
         assertTrue(we, "Wrong country");
     }
 
-    public void  assertCanadaLocation(){
+    public void assertCanadaLocation() {
         String assertion = baseFunc.findElement(CANADA_LANG_ICON).getAttribute("class");
         WebElement assertion1 = baseFunc.findElement(CANADA_LANG_ICON);
         assertEquals(assertion, "icp-nav-flag icp-nav-flag-ca icp-nav-flag-discoverability-t1", "Something wrong");
@@ -49,7 +52,7 @@ public class MainPageAssert {
         assertTrue(assertion1.isDisplayed(), "Element " + assertion1 + "not Displayed");
     }
 
-    public MainPage assertItemAdded(){
+    public MainPage assertItemAdded() {
         String assertion = baseFunc.getText(ADD_TO_CART_SUCC_MES);
         WebElement assertion1 = baseFunc.findElement(ADD_TO_CART_SUCC_MES);
         assertEquals(assertion, "Added to Cart", "Something wrong");
@@ -58,32 +61,33 @@ public class MainPageAssert {
         return new MainPage(baseFunc);
     }
 
-    public void verifyWrongItem(String input){
-      String  verify =   baseFunc.getText(VERIFY_NORESULT);
-        assertEquals(verify + " " + input , "No results for" +" "+ input , "Something wrong");
+    public void verifyWrongItem(String input) {
+        String verify = baseFunc.getText(VERIFY_NORESULT);
+        assertEquals(verify + " " + input, "No results for" + " " + input, "Something wrong");
     }
 
-    public void verifyLogo(){
-       WebElement we = baseFunc.findElement(By.xpath("//a[@id='nav-logo-sprites']"));
-       if (baseFunc.findElement(amazonLogo).equals(we)){
-           Assert.assertTrue(we.isDisplayed() , "Element not present");
+    public void verifyLogo() {
+        WebElement we = baseFunc.findElement(By.xpath("//a[@id='nav-logo-sprites']"));
+        if (baseFunc.findElement(amazonLogo).equals(we)) {
+            Assert.assertTrue(we.isDisplayed(), "Element not present");
 
-       } else {
-           Assert.fail();
+        } else {
+            Assert.fail();
         }
         LOGGER.info("Logo verify" + we.isDisplayed());
 
     }
-    public void getTitleAssert (){
-        Assert.assertTrue(baseFunc.getTitle("Amazon.com. Spend less. Smile more.") , "Wrong title");
+
+    public void getTitleAssert() {
+        Assert.assertTrue(baseFunc.getTitle("Amazon.com. Spend less. Smile more."), "Wrong title");
     }
 
 
-    public MainPageAssert (BaseFunc baseFunc){
-        this.baseFunc=baseFunc;
+    public MainPageAssert(BaseFunc baseFunc) {
+        this.baseFunc = baseFunc;
     }
 
-    public MainPage verifyGiftCardsElementPresent(){
+    public MainPage verifyGiftCardsElementPresent() {
         List<WebElement> elements = baseFunc.findElements(giftCardMenu);
         int size = elements.size();
         assertEquals(size, 14, "WRONG SIZE");
@@ -91,5 +95,27 @@ public class MainPageAssert {
         return new MainPage(baseFunc);
     }
 
+    public MainPageAssert checkNavBarContent() {
+        List<WebElement> elements = baseFunc.findElements(navBarMenu);
+        for (WebElement we : elements) {
+            we.isDisplayed();
+            LOGGER.info(we.getText());
+        }
+       String textTodayDeals = baseFunc.getText(getTextTodayDeals);
+       String textCustomerService = baseFunc.getText(getCustomerService);
+       String textGiftCards = baseFunc.getText(getGiftCards);
+       String textRegistry = baseFunc.getText(getRegistry);
+       String textSell = baseFunc.getText(getSell);
+        Assert.assertEquals(textTodayDeals,"Today's Deals" );
+        Assert.assertEquals(textCustomerService,"Customer Service");
+        Assert.assertEquals(textGiftCards,"Gift Cards" );
+        Assert.assertEquals(textRegistry,"Registry" );
+        Assert.assertEquals(textSell,"Sell" );
+            return this;
+        }
 
-}
+        public void checkQuantityFooterElement(){
+       int we = baseFunc.findElements(footerElements).size();
+        assertEquals(we, 69);
+        }
+    }

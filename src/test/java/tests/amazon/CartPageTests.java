@@ -8,19 +8,16 @@ import tests.basetest.BasicTest;
 
 public class CartPageTests extends BasicTest {
 
-    @BeforeClass
-    public void signIn(){
-        new MainPage(baseFunc).clickSignIn().signIn("bstalinskyi@gmail.com", "Dsaewqxx!!");
-    }
-    @BeforeMethod(groups = {"negative"})
+    @BeforeMethod(groups = {"smoke"})
     public void addItemToCart(){
         new MainPage(baseFunc).inputSearchLineType("Jordan ").clickSearch().menShoesSize("9")
-                .chooseItemFullMenu("Men's Jordan 1 Mid Black/Fire Red-White (554724 078)")
+                .chooseItemFullMenu("Nike Mens Dunk High DD1399 102 Game Royal - Size")
                .addToCart();
     }
-    @Test(groups = {"negative"})
-    public void deleteItem()  {
+    @Test(groups = {"smoke"})
+    public void deleteItem() {
        new MainPage(baseFunc).goToCartBut().deleteBut().deleteButassert();
+
 
     }
 

@@ -85,4 +85,5 @@ public class SignUpPage {
         return new MainPage(baseFunc);
 
     }
+
 }

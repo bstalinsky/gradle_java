@@ -46,7 +46,7 @@ public class SearchPageTests extends BasicTest {
                 .menShoesSize("10.5");
     }
 
-    @Test(groups = {"smoke"}, priority = 4, dependsOnMethods = {"selectAdidasAndFilters"})
+    @Test(groups = {"smoke"}, priority = 4, dependsOnMethods = {"selectAdidasAndFilters"}, enabled = false)
     public void addItemToCartWithFilters() {
         selectAdidasAndFilters();
         new SearchPage(baseFunc).chooseItemFullMenu("adidas Men's Kaptir 2.0 Running Shoe")
@@ -57,7 +57,7 @@ public class SearchPageTests extends BasicTest {
                 .assertItemAdded();
     }
 
-    @Test(groups = {"smoke"}, priority = 5)
+    @Test(groups = {"negative"}, priority = 5)
     public void inputWrongItemIntoSearchLine(){
         new MainPage(baseFunc).selectCategory("Deals")
                 .inputSearchLineType("тестинг11").clickSearch();

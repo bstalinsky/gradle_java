@@ -1,34 +1,35 @@
 package tests.amazon;
 
+import com.amazon.mainpagesteps.pageobjectVerify.MainPageAssert;
 import com.amazon.pageobject.MainPage;
-import com.amazon.pageobject.SignInPage;
+import com.amazon.pageobject.signInMenu.SignInPage;
 import org.testng.annotations.Test;
 import tests.basetest.BasicTest;
 
 public class MainPageTests extends BasicTest {
 
-   @Test(groups = {"smoke"}, priority = 4)
-    public SignInPage goToSignIn(){
+    @Test(groups = {"smoke"}, priority = 4)
+    public SignInPage goToSignIn() {
         MainPage mainPage = new MainPage(baseFunc);
         mainPage.clickSignIn();
         return new SignInPage(baseFunc);
 
     }
 
-    @Test(groups = {"smoke"} , priority = 5)
-    public void checkLogo(){
-       new MainPage(baseFunc).logoIsDisplayed().verifyLogo();
+    @Test(groups = {"smoke"}, priority = 5)
+    public void checkLogo() {
+        new MainPage(baseFunc).logoIsDisplayed().verifyLogo();
     }
 
-    @Test(groups = {"smoke"} , priority = 6)
-    public void checkGetTitle(){
+    @Test(groups = {"smoke"}, priority = 6)
+    public void checkGetTitle() {
         new MainPage(baseFunc).getTitle().getTitleAssert();
     }
 
     @Test(groups = {"smoke"}, priority = 2)
     public void deliveryChangeMenuSelect() throws InterruptedException {
-       new MainPage(baseFunc).clickOnDeliverTo()
-               .selectDeliveryCountry("Canada").clickDoneBut().verifyDeliveryCountry();
+        new MainPage(baseFunc).clickOnDeliverTo()
+                .selectDeliveryCountry("Canada").clickDoneBut().verifyDeliveryCountry();
     }
 
     @Test(groups = {"smoke"}, priority = 1)
@@ -39,29 +40,35 @@ public class MainPageTests extends BasicTest {
     }
 
     @Test(groups = {"smoke"}, priority = 7)
-    public void checkHumberMenu()  {
-       new MainPage(baseFunc).clickOnHamberMenu().selectCatFromHamMenu()
-               .verifyGiftCardsElementPresent().selectGiftCardsSubCategory();
+    public void checkHumberMenu() {
+        new MainPage(baseFunc).clickOnHamberMenu().selectCatFromHamMenu()
+                .verifyGiftCardsElementPresent().selectGiftCardsSubCategory();
     }
 
 
     @Test(groups = {"negative"}, priority = 3)
     public void e2eComputerCategoryTest() {
 //       deliveryChangeMenuSelect();
-       new  MainPage(baseFunc).selectCategory("Computers")
-               .inputSearchLineType("Macbook")
-               .clickSearch()
-               .selectComputerCategory("Computers & Tablets")
-               .inputPriceValue("300", "3000")
-               .chooseItem("Apple MacBook Pro (13-inch, 8GB RAM, 256GB SSD Storage, Magic Keyboard) - Space Gray (Renewed)")
+        new MainPage(baseFunc).selectCategory("Computers")
+                .inputSearchLineType("Macbook")
+                .clickSearch()
+                .selectComputerCategory("Computers & Tablets")
+                .inputPriceValue("300", "3000")
+                .chooseItem("Apple MacBook Pro (13-inch, 8GB RAM, 256GB SSD Storage, Magic Keyboard) - Space Gray (Renewed)")
 //               .quantitySelect("2")
-               .addToCart()
-               .assertItemAdded()
-               .goToCartBut().deleteBut().deleteButassert();
+                .addToCart()
+                .assertItemAdded()
+                .goToCartBut().deleteBut().deleteButassert();
 
     }
 
+    @Test(groups = {"smoke"} , priority = 8)
+    public void checkNavBarMainPageContent() {
+        new MainPageAssert(baseFunc).checkNavBarContent();
+    }
 
-
-
+    @Test(groups = {"smoke"} , priority = 9)
+    public void checkFooterElements(){
+        new MainPageAssert(baseFunc).checkQuantityFooterElement();
+    }
 }

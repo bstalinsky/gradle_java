@@ -1,8 +1,12 @@
-package com.amazon.pageobject;
+package com.amazon.pageobject.signInMenu;
 
+import com.amazon.pageobject.MainPage;
 import com.amazon.pageobject.basefunc.BaseFunc;
 import org.openqa.selenium.By;
+import org.openqa.selenium.remote.internal.WebElementToJsonConverter;
 import org.testng.Assert;
+import org.openqa.selenium.WebElement;
+
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -12,12 +16,15 @@ public class SignInPage {
 
     private final By emailField = By.xpath("//input[@id='ap_email']");
     private final By passwordField = By.xpath("//input[@id='ap_password']");
+    private final By passwordFieldRe = By.xpath("//input[@id='ap_password']");
     private final By rememberMeCheckbox = By.xpath("//input[@name='rememberMe']");
     private final By signInBut = By.xpath("//input[@id='signInSubmit']");
 
     private final By navBarMenu = By.xpath("//a[@id='nav-link-accountList']");
+    private final By yourAccount = By.xpath("//span[normalize-space()='Account']");
 
-
+    private final By importantMessage = By.xpath("//div[@class = 'a-alert-content']//span");
+    private final By idCapture = By.xpath("//input[@id='auth-captcha-guess']");
 
 
     private final By continueBut = By.xpath("//input[@id='continue']");
@@ -66,9 +73,31 @@ public class SignInPage {
         return new MainPage(baseFunc);
     }
 
-    public void invalidPassValid()  {
+    public void invalidPassValid() {
+        WebElement we = baseFunc.findElement(importantMessage);
         String error1 = getTextEmail1();
+        String error2 = we.getText();
+//        if (we.equals(error2)) {
+//            baseFunc.type(passwordFieldRe, "test");
+//            baseFunc.type(idCapture, "test");
+//            baseFunc.click(signInBut);
+            assertEquals(error1, "There was a problem");
+//        } else
+//        assertEquals(error1, "There was a problem");
+    }
+
+    public void reVerifyInvalid() {
+        WebElement we = baseFunc.findElement(importantMessage);
+        String error1 = getTextEmail1();
+        String error2 = we.getText();
+//        if (we.equals(error2)) {
+        baseFunc.click(passwordFieldRe);
+            baseFunc.type(passwordFieldRe, "test");
+            baseFunc.type(idCapture, "test");
+            baseFunc.click(signInBut);
         assertEquals(error1, "There was a problem");
+//        } else
+//        assertEquals(error1, "There was a problem");
     }
 
     public SignInPage signIn(String email, String password){
@@ -80,7 +109,7 @@ public class SignInPage {
         return new SignInPage(baseFunc);
 //        this.typePassword(password);
     }
-    
+
 
     public SignInPage invalidEmailType(String email){
         this.typeEmail(email);
@@ -99,6 +128,13 @@ public class SignInPage {
     public void asserSignOut(){
        String error =  baseFunc.findElement(assertSignIn).getText();
        Assert.assertEquals(error , "Sign in");
+    }
+
+
+    public SignInPage clickYourAccount(){
+        baseFunc.moveToElement(navBarMenu);
+        baseFunc.click(yourAccount);
+        return new SignInPage(baseFunc);
     }
 
 
